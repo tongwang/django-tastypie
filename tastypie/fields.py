@@ -789,7 +789,7 @@ class ToOneField(RelatedField):
             fk_bundle = Bundle(obj=foreign_obj, request=bundle.request)
         else:
             # make a fake obj to satisfy get_resource_uri
-            fk_bundle = type("", (), {'id': foreign_obj})()
+            fk_bundle = type(str(''), (), {'pk': foreign_obj})()
         return self.dehydrate_related(fk_bundle, fk_resource, for_list=for_list)
 
     def hydrate(self, bundle):
